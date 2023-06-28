@@ -8,11 +8,11 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.allSettled([userPromise, photoPromise])
     .then((results) => {
       const result = [];
-      results.forEach((element) => {
-        if (element.status === 'fulfilled') {
-          result.push({ status: element.status, value: element.value });
+      results.forEach((item) => {
+        if (item.status === 'fulfilled') {
+          result.push({ status: item.status, value: item.value });
         } else {
-          result.push({ status: element.status, value: `${element.reason}` });
+          result.push({ status: item.status, value: `${item.reason}` });
         }
       });
       return result;
